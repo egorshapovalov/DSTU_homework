@@ -6,4 +6,6 @@ while N <= 0:
             print("Введите целое число БОЛЬШЕ нуля!!!")
     except:
         print("Вводите целое число")
-print(N%3==0)
+while N != 0 and N%3 == 0:
+    N = N//3
+print(N==1)
