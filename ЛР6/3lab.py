@@ -7,8 +7,15 @@ for x in lst:
     if x > 0:
         COUNT += 1
 lst.reverse()
-nyl_posledniy = lst.index(0) if 0 in lst else -1
-for x in lst[:nyl_posledniy]:
+#lst = lst[::-1]
+#nyl_posledniy = lst.index(0) if 0 in lst else -1
+#for x in lst[:nyl_posledniy]:
+#    SUM += x
+for x in lst:
+    if x == 0:
+        break
     SUM += x
-print(SUM)
-print(COUNT)
+
+print(f"{SUM=}")
+print(f"{COUNT=}")
+input()
