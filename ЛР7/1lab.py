@@ -1,8 +1,10 @@
 
 def proverka(x):
     if x.isdigit():
-        return int(x)
-    proverka(input("Введите число!\n"))
+        if int(x)> 0:
+            return int(x)
+        return proverka(input("Введите целое положительное число!\n"))
+    return proverka(input("Введите число!\n"))
     
 def SUM(x):
     Sum = 0
