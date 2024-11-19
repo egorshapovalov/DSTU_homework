@@ -1,10 +1,9 @@
-
-def proverka(x):
+def CHECK(x):
     if x.isdigit():
         if int(x)> 0:
             return int(x)
-        return proverka(input("Введите целое положительное число!\n"))
-    return proverka(input("Введите число!\n"))
+        return CHECK(input("Введите целое положительное число!\n"))
+    return CHECK(input("Введите целое положительное число!\n"))
     
 def SUM(x):
     Sum = 0
@@ -12,8 +11,8 @@ def SUM(x):
         Sum += i
     return Sum
     
-M = proverka(input("Введите кол-во строк: "))
-N = proverka(input("Введите кол-во столбцов: "))
+M = CHECK(input("Введите кол-во строк: "))
+N = CHECK(input("Введите кол-во столбцов: "))
 lst = [[m+n for n in range(N)] for m in range(M)]
 
 print(*lst, sep="\n")
