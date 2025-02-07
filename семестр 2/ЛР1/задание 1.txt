@@ -1,0 +1,21 @@
+// Example program
+#include <iostream>
+#include <string>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{   double x, y, z;
+    
+    cout << "Enter x: ";
+    cin >> x;
+    while (cin.fail()) {cin.clear(); cin >> x;}
+    cin.ignore();
+    cout << "Enter y: ";
+    cin >> y;
+    while (cin.fail()) {cin.clear(); cin >> y;}
+    cin.ignore();
+    z = sin(fabs(x)/(fabs(x)+fabs(y)));
+    cout << "z = " << z;
+}
