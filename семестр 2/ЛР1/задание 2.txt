@@ -1,0 +1,33 @@
+// Example program
+#include <iostream>
+#include <string>
+#include <math.h>
+
+using namespace std;
+
+double Check_input(string s){
+    double x;
+    cout << s;
+    cin >> x;
+    while (cin.fail()) {
+       cout << "Incorrect input." << endl << s;
+       cin.clear();
+       while(cin.get()!='\n');
+       cin >> x;
+    }
+    return x;
+}
+int main()
+{   
+    double x = 0, y, a = -0.5, b=2;
+    
+    x = Check_input("Enter x:");
+    if (1 <= x and x <= 2){
+        y = a*pow(x,2)*log(x);
+    } else if (x < 1) {
+        y = 1;
+    } else {
+        y = pow(exp(1), a*x) + 5*pow(x, 4);
+    }
+    cout << "y = " << y;
+}

@@ -5,17 +5,26 @@
 
 using namespace std;
 
-int main()
-{   double x, y, z;
-    
-    cout << "Enter x: ";
+double Check_input(string s){
+    double x;
+    cout << s;
     cin >> x;
-    while (cin.fail()) {cin.clear(); cin >> x;}
-    cin.ignore();
-    cout << "Enter y: ";
-    cin >> y;
-    while (cin.fail()) {cin.clear(); cin >> y;}
-    cin.ignore();
+    while (cin.fail()) {
+       cout << "Incorrect input." << endl << s;
+       cin.clear();
+       while(cin.get()!='\n');
+       cin >> x;
+    }
+    return x;
+}
+int main()
+{   double x = 0, y = 0, z;
+    while (fabs(x)+fabs(y) == 0){
+        x = Check_input("Enter x:");
+        
+        y = Check_input("Enter y:");
+        if (fabs(x)+fabs(y) == 0) cout << "division by zero" << endl << "Try again" << endl;
+    }
     z = sin(fabs(x)/(fabs(x)+fabs(y)));
     cout << "z = " << z;
 }
