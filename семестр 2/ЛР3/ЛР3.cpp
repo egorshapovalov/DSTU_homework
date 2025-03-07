@@ -18,7 +18,7 @@ int main()
     cout << "Input the mass length: ";
     cin >> length;
     while (cin.fail()) {
-        cout << "Incorrect input." << endl << "Input the mass length";
+        cout << "Incorrect input." << endl << "Input the mass length: ";
         cin.clear();
         while (cin.get() != '\n');
         cin >> length;
@@ -33,8 +33,8 @@ int main()
     cout << endl;
     for (int i = 0; i < length; i++) {
         
-        if (i > 0 and i < length - 1) {
-            if (*(nums + i - 1) < *(nums + i) and *(nums + i) > *(nums + i + 1)) index_max_loc = i;
+        if (i > 0 and i < length - 2) {
+            if (nums[i] < nums[i + 1] and nums[i + 1] > nums[i + 2]) index_max_loc = i+1;
         };
         if (*(nums + i) < 0) { 
             count_negative++;
