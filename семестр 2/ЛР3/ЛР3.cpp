@@ -9,11 +9,13 @@ using namespace std;
 
 
 int main()
-{   
+{
     int length;
-    float *nums;
-    int count_negative = 0;
-    int index_max_loc = -1;
+    double* nums;
+    double sum = 0;
+    double sum_2 = 0;
+    int index_max_module = 0;
+    bool Flag = false;
 
     cout << "Input the mass length: ";
     cin >> length;
@@ -24,44 +26,51 @@ int main()
         cin >> length;
     }
 
-    cout << endl << "New mass:" << endl;
-    nums = new float[length];
+    cout << endl << "Array:" << endl;
+    nums = new double[length];
     for (int i = 0; i < length; i++) {
         *(nums + i) = rand() - rand();
         cout << *(nums + i) << "\t";
     }
     cout << endl;
+
     for (int i = 0; i < length; i++) {
-        
-        if (i > 0 and i < length - 2) {
-            if (nums[i] < nums[i + 1] and nums[i + 1] > nums[i + 2]) index_max_loc = i+1;
-        };
-        if (*(nums + i) < 0) { 
-            count_negative++;
-            *(nums + i) = *(nums + i) * *(nums + i);
+
+        if (nums[i] > 0 and nums[index_max_module] > 0 and nums[i] > nums[index_max_module] or
+            nums[i] < 0 and nums[index_max_module] > 0 and -nums[i] > nums[index_max_module] or
+            nums[i] > 0 and nums[index_max_module] < 0 and nums[i] > -nums[index_max_module] or
+            nums[i] < 0 and nums[index_max_module] < 0 and -nums[i] > -nums[index_max_module]) {
+            index_max_module = i;
         }
+        if (Flag or nums[i] > 0 and sum == 0) {
+            if (Flag == false) Flag = true;
+            else sum += nums[i];
+        }
+        sum_2 += nums[i];
     }
+    sum_2 = sum_2 / length;
 
-    cout << endl << "The index local max: " << index_max_loc << endl;
-    
-    cout << endl << "Update mass:" << endl;
-    for (int i = 0; i < length; i++) {
-        cout << *(nums + i) << "\t";
-    }
-    cout << endl;
+    cout << endl << "The index of the maximum value modulo: " << index_max_module << endl;
+    cout << endl << "The Sum: " << sum << endl;
+    cout << endl << "The Arithmetic mean: " << sum_2 << endl;
 
+
+    double buffer;
+    int index_more_sum_2 = 0;
     for (int i = 0; i < length; i++) {
-        for (int x = length-1; x > i; x--) {
-            float buffer = *(nums+i);
-            if (buffer > *(nums+x)){
-                *(nums + i) = *(nums + x);
-                *(nums + x) = buffer;
+        if (nums[i] > sum_2) {
+            buffer = nums[i];
+            for (int x = i; index_more_sum_2 < x; x--) {
+                nums[x] = nums[x - 1];
+                nums[x - 1] = buffer;
             }
+            index_more_sum_2++;
         }
     }
 
-    cout << endl << "Sorted mass:" << endl;
+    cout << endl << "Converted array:" << endl;
     for (int i = 0; i < length; i++) {
         cout << *(nums + i) << "\t";
     }
+
 }
