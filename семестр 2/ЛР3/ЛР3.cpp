@@ -2,10 +2,10 @@
 //
 
 #include <iostream>
+#include <string.h>
 
 
 using namespace std;
-
 
 
 int main()
@@ -29,7 +29,7 @@ int main()
     cout << endl << "Array:" << endl;
     nums = new double[length];
     for (int i = 0; i < length; i++) {
-        *(nums + i) = rand() - rand();
+        *(nums + i) = double(rand() - rand()) / rand();
         cout << *(nums + i) << "\t";
     }
     cout << endl;
